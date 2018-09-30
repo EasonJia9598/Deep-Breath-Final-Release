@@ -16,8 +16,8 @@ var windowHalfY = window.innerHeight / 2;
 var meshobject;
 
 function init() {
-    width = document.getElementById('card2').clientWidth;
-    height = document.getElementById('card2').clientHeight;
+    width = document.getElementById('card2').clientWidth - 20 ;
+    height = document.getElementById('card2').clientHeight - 30;
 
     renderer = new THREE.WebGLRenderer({
         antialias : true
@@ -62,14 +62,14 @@ function init() {
     THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
 
     new THREE.MTLLoader()
-        .setPath( '../examples/models/obj/plant/' )
+        .setPath( '../models/obj/plant/' )
         .load( 'low-poly-mill.mtl', function ( materials ) {
 
             materials.preload();
 
             new THREE.OBJLoader()
                 .setMaterials( materials )
-                .setPath( '../examples/models/obj/plant/' )
+                .setPath( '../models/obj/plant/' )
                 .load( 'low-poly-mill.obj', function ( object ) {
 
                     object.position.y = - 95;

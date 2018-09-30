@@ -71,28 +71,30 @@ var material;
 var mesh2;
 
 function initObject() {
-    console.log(`B`);
 
-    var manager = new THREE.LoadingManager();
+    var loader = new THREE.OBJLoader();
 
-    var loader = new THREE.OBJLoader(manager);
-    loader.load('../models/obj/heart.obj', function (object) {
-        objMesh = object;
-        objMesh.position = new THREE.Vector3(0, 0, 0);
+// load a resource
+    loader
+        .load('../models/obj/heart.obj' , function ( object ) {
 
-        pivot = new THREE.Group();
-        box = new THREE.Box3().setFromObject(objMesh);
+            objMesh = object;
+            objMesh.position = new THREE.Vector3(0, 0, 0);
 
-        pivot.add(objMesh);
+            pivot = new THREE.Group();
+            box = new THREE.Box3().setFromObject(objMesh);
 
-        box.center(objMesh.position);
+            pivot.add(objMesh);
 
-        objMesh.position.multiplyScalar(-1);
+            box.center(objMesh.position);
 
-        scene.add(pivot);
-        box.center(pivot.position);
+            objMesh.position.multiplyScalar(-1);
 
-    });
+            scene.add(pivot);
+            box.center(pivot.position);
+
+        }
+    );
 
 
 
@@ -130,14 +132,12 @@ function threeStart() {
 function animation()
 {
 
-    console.log(`A`);
 
 
     //mesh.rotation.y +=0.01;
     // boxMesh.rotateY(0.01);
     if(pivot != undefined){
         pivot.rotateY(0.02 );
-        console.log(bottom_size);
             if (pivot.scale.x <= bottom_size || pivot.scale.x >= top_size) { // heart
                 if (timeGap > 0) {
                     timeGap -= 1;
