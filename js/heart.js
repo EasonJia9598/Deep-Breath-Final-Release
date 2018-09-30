@@ -7,7 +7,7 @@ let SIZE = 50;
 var timeGap = SIZE;
 let scale_small = 0.5;
 let scale_midle = 2.1;
-let scale_large = 2.9;
+let scale_large = 3.0;
 var bottom_size = scale_small;
 var top_size = scale_midle;
 var mid_size = scale_midle;
@@ -153,7 +153,7 @@ function animation()
             }
 
         if(stage === 2){
-            if ((index %2 - 1) === 0 && index <= 2 * times + 6){
+            if ((index %2 - 1) === 0 && index <= 2 * times + 4){
                 document.getElementById('audio2').play();
             }
             if (index >= 2 * times + 6){
@@ -197,7 +197,7 @@ function motion_change_small_large() {
 function select_change(){
     var e = document.getElementById("times");
     times = e.options[e.selectedIndex].value;
-    window.alert(times);
+    // window.alert(times);
 
 }
 
